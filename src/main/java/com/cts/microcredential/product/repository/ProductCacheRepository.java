@@ -14,7 +14,7 @@ public class ProductCacheRepository {
 
     private RedisTemplate<String, SKU> redisTemplate;
 
-    private HashOperations hashOperations;
+    private HashOperations<String, String, SKU> hashOperations;
 
     public ProductCacheRepository(RedisTemplate<String, SKU> tmplate) {
         this.redisTemplate = tmplate;
