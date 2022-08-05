@@ -14,7 +14,7 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
 @Configuration
-@EnableElastiCache({@CacheClusterConfig(name = "inventorycache")})
+//@EnableElastiCache({@CacheClusterConfig(name = "inventorycache")})
 public class RedisConfig {
 
     @Value("${spring.redis.host}")
@@ -26,7 +26,7 @@ public class RedisConfig {
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration(host, port);
-        return new JedisConnectionFactory(redisStandaloneConfiguration);
+    	return new JedisConnectionFactory();
     }
 
     @Bean(value = "redisTemplate")
@@ -36,10 +36,10 @@ public class RedisConfig {
         return redisTemplate;
     }
 
-    @Bean(name = "cacheManager")
-    public CacheManager cacheManager(JedisConnectionFactory jedisConnectionFactory) {
-        return RedisCacheManager.builder(jedisConnectionFactory)
-                .cacheDefaults(RedisCacheConfiguration.defaultCacheConfig())
-                .build();
-    }
+//    @Bean(name = "cacheManager")
+//    public CacheManager cacheManager(JedisConnectionFactory jedisConnectionFactory) {
+//        return RedisCacheManager.builder(jedisConnectionFactory)
+//                .cacheDefaults(RedisCacheConfiguration.defaultCacheConfig())
+//                .build();
+//    }
 }
