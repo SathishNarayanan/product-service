@@ -21,9 +21,9 @@ public class SKU implements Serializable {
 
     private String name;
 
-    private String category_id;
+    private String categoryId;
 
-    private String subCategory_id;
+    private String subCategoryId;
 
     private String brand;
 
